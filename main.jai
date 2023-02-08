@@ -5,18 +5,23 @@
 #import "Random";
 #import "stb_image_write";
 
+width :: 800;
+height :: 800;
+depth :: 255;
+num_chans :: 3;
+light_dir :: Vector3.{0, 0, -1};
+
 main :: () {
 	print("\n===================================\n");
 
-	width :s32 = 512;
-	height :s32 = 512;
-	num_chans := 3;
+	// width :s32 = 512;
+	// height :s32 = 512;
+	// num_chans := 3;
 
 	red := Vector4.{255, 0, 0, 255};
 	white := Vector4.{255, 255, 255, 255};
 	green := Vector4.{0, 255, 0, 255};
 	cyan := Vector4.{0, 255, 255, 255};
-
 
 	// print("content of cube\n%\n", obj_data);
 
@@ -114,7 +119,7 @@ main :: () {
     // output_buffer.count = width * height * num_chans;
 	zbuffer :[..]float;
 	for 0..(width * height){
-		array_add(*zbuffer, -FLOAT32_MAX);
+		array_add(*zbuffer, -FLOAT32_MIN);
 	}
 
 	// for < 0..(width*height) {
@@ -123,16 +128,42 @@ main :: () {
 
 	rand_color := Vector4.{random_get_within_range(1, 255), random_get_within_range(1, 255), random_get_within_range(1, 255), 255}; 
 	for face, i: model.faces {
-		pts :[3]Vector3;
+		// _face : Vector3 = face.component[i];
+		// print("face: %\n", face);
+		// print("Face index: %\n", face.component[1]);
+		screen_coords : [3]Vector3;
+		world_coords : [3]Vector3;
+
 		for j: 0..2 {
-			pts[j] = world_2_screen(model.verts[cast(int)face.component[j]], width, height);
-			triangle_other(*pts, zbuffer, img, rand_color);
+			v : Vector3 = model.verts[cast(int)face.component[j]];
+			screen_coords[j] = Vector3.{floor((v.x + 1) * width /2.0), (v.y + 1) * floor(height / 2.0), floor((v.z + 1) * depth / 2.0)};
+			world_coords[j] = v;
+		}
+		n : Vector3 = cross_product((world_coords[2] - world_coords[0]), (world_coords[1] - world_coords[0]) );
+		n = normalize(n);
+
+		intensity : float = dot_product(n, light_dir);
+		// print("screen_coords %\n", screen_coords);
+		if intensity > 0 {
+			intensity_color := Vector4.{intensity * 255, intensity * 255, intensity * 255, 255};
+			triangle(screen_coords[0], screen_coords[1], screen_coords[2], img, intensity_color, zbuffer);
 		}
 	}
 
 
 	stbi_flip_vertically_on_write(1);
-	stbi_write_png("output_triangles_05_2.png", width, height, 3, img.pixels.data, cast(s32)(width * num_chans));
+	stbi_write_png("output_chapter_03.png", width, height, 3, img.pixels.data, cast(s32)(width * num_chans));
+
+	// Dump Z-Buffer (debugging purposes only)
+	zbimg := create_image(width, height, num_chans);
+	for i: 0..(width -1) {
+		for j: 0..(height -1) {
+			set_pixel(zbimg, i, j, Vector4.{zbuffer[i + j * width], zbuffer[i + j * width],zbuffer[i + j * width], 255});
+		}
+	}
+
+	stbi_flip_vertically_on_write(1);
+	stbi_write_png("output_depth_chapter_03.png", width, height, 3, zbimg.pixels.data, cast(s32)(width * num_chans));
 }
 
 Vec2i ::[2]int;
@@ -256,7 +287,8 @@ parse_obj :: (obj_path: string) -> Mesh {
 	return mesh;
 }
 
-triangle :: (t0: Vector2, t1: Vector2, t2: Vector2, img: Image, color: Vector4){
+// TODO: Fix float errors, we need vector of ints
+triangle :: (t0: Vector3, t1: Vector3, t2: Vector3, img: Image, color: Vector4, zbuffer: []float){
 	if t0.y == t1.y && t0.y == 2 return;	// I dont care about degenerate triangles
 	// sort the vertices, t0, t1, t2 lower-to-upper (bubblesort yay!)
 	if t0.y > t1.y Swap(*t0, *t1);
@@ -269,49 +301,24 @@ triangle :: (t0: Vector2, t1: Vector2, t2: Vector2, img: Image, color: Vector4){
 		segment_height := ifx second_half then t2.y - t1.y else t1.y - t0.y;
 		alpha :float = cast(float)i/ total_height;
 		beta :float = (i - ( ifx second_half then t1.y - t0.y else 0 )) / segment_height;
-		A :Vector2 = t0 + (t2 - t0) * alpha;
-		B :Vector2 = ifx second_half then t1 + (t2 - t1) * beta else t0 + (t1 - t0) * beta;
+		A :Vector3 = t0 + (t2 - t0) * alpha;
+		B :Vector3 = ifx second_half then t1 + (t2 - t1) * beta else t0 + (t1 - t0) * beta;
 
 		if A.x > B.x Swap(*A, *B);
 
 		for j: cast(int)A.x..cast(int)B.x {
-			set_pixel(img, j, cast(int)(t0.y+i), color);
-		}
-	}
-}
-
-triangle_other :: (pts :*[3]Vector3, zbuffer :[]float, img :Image, color : Vector4) {
-	bboxmin := Vector2.{FLOAT32_MAX, FLOAT32_MAX};
-	bboxmax := Vector2.{-FLOAT32_MAX, -FLOAT32_MAX};
-	clamp := Vector2.{cast(float)(img.width - 1), cast(float)(img.height - 1)};
-
-	// print("type of pts: %\n", type_of(pts[0]));
-	// print("pts: %\n", pts[0][0]);
-	for i: 0..2 {
-		for j: 0..1 {
-			bboxmin.component[j] = max(0.0, min(bboxmin.component[j], pts[0][i].component[j])); 
-			bboxmax.component[j] = min(clamp.component[j], max(bboxmax.component[j], pts[0][i].component[j]));
-		}
-	}
-	P :Vector3;
-	P.x = bboxmin.x;
-	P.y = bboxmin.y;
-	for x: cast(int)P.x..cast(int)bboxmax.x {
-		for y: cast(int)P.y..cast(int)bboxmax.y {
-			bc_screen := barycentric(pts[0][0], pts[0][1], pts[0][2], P);
-			if (bc_screen.x < 0) || (bc_screen.y < 0 || bc_screen.z < 0) continue;
-			P.z = 0.0;
-			for i: 0..2 pts[0][i].component[2] * bc_screen.component[i];
-			if zbuffer[cast(int)(P.x + P.y * img.width)] < P.z {
-				zbuffer[cast(int)(P.x + P.y * img.width)] = P.z;
+			phi : float = ifx B.x == A.x then 1.0 else cast(float)(j - A.x) / cast(float)(B.x - A.x);
+			P :Vector3 = A + (B - A) * phi;
+			idx : int = j + cast(int)(t0.y + i) * width;
+			if zbuffer[idx] < P.z {
+				zbuffer[idx] = P.z;
 				set_pixel(img, cast(int)P.x, cast(int)P.y, color);
 			}
-
 		}
 	}
-
 }
 
+// TODO : DELETE THIS, this is the cross product
 operator ^ :: (a :Vector3, b :Vector3) -> Vector3 {
 	return Vector3.{cast(float)( (cast(int)a.x) ^ (cast(int)b.x) ),
 					cast(float)( (cast(int)a.y) ^ (cast(int)b.y) ),
