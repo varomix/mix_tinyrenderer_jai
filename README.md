@@ -1,2 +1,3 @@
-# mix_tinyrenderer_jai
+# mix Tinyrenderer jai
 The tiny renderer on Jai
+
