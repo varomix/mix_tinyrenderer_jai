@@ -5,8 +5,8 @@
 #import "Random";
 #import "stb_image_write";
 
-width :: 800;
-height :: 800;
+width :: 512;
+height :: 512;
 depth :: 255;
 num_chans :: 3;
 light_dir :: Vector3.{0, 0, -1};
@@ -117,18 +117,31 @@ main :: () {
 
     // output_buffer.data = alloc (size_of (s32) * width * height * num_chans);
     // output_buffer.count = width * height * num_chans;
-	zbuffer :[..]float;
-	for 0..(width * height){
-		array_add(*zbuffer, -FLOAT32_MIN);
+
+	// zbuffer : []float;
+    // zbuffer.data = alloc (size_of (float) * width * height * num_chans);
+    // zbuffer.count = width * height * num_chans;
+
+	zbuffer :[]float;
+	zbuffer.data = alloc (size_of(float) * width * height * num_chans + 1);
+	zbuffer.count = width * height * num_chans + 1;
+	for 0..((width * height * num_chans)){
+		// array_add(*zbuffer, -FLOAT32_MIN);
+		zbuffer[it] = -FLOAT32_MIN;
 	}
 
 	// for < 0..(width*height) {
 		// zbuffer[it] = FLOAT32_MAX;
 	// }
 
+	print("model vertices: %\n", model.verts.count);
+	print("model faces: %\n", model.faces.count);
+
+	print("image pixels: %\n", img.pixels.count);
 	rand_color := Vector4.{random_get_within_range(1, 255), random_get_within_range(1, 255), random_get_within_range(1, 255), 255}; 
-	for face, i: model.faces {
-		// _face : Vector3 = face.component[i];
+	// for face, i: model.faces {
+		for i: 0..(model.faces.count-1) {
+		face : Vector3 = model.faces[i];
 		// print("face: %\n", face);
 		// print("Face index: %\n", face.component[1]);
 		screen_coords : [3]Vector3;
@@ -136,14 +149,18 @@ main :: () {
 
 		for j: 0..2 {
 			v : Vector3 = model.verts[cast(int)face.component[j]];
-			screen_coords[j] = Vector3.{floor((v.x + 1) * width /2.0), (v.y + 1) * floor(height / 2.0), floor((v.z + 1) * depth / 2.0)};
+			// print("% % : v: %\n", i, j, v);
+			// print("depth: %\n", (v.z + 1) * (depth / 2.0));
+			screen_coords[j] = Vector3.{cast(float)(floor((v.x + 1) * width /2.0)), cast(float)((v.y + 1) * height / 2.0), cast(float)((v.z + 1) * depth / 2.0)};
+			// print("screen_coords 1 %\n", screen_coords[0]);
+			// print("screen_coords 2 %\n", screen_coords[1]);
+			// print("screen_coords 3 %\n", screen_coords[2]);
 			world_coords[j] = v;
 		}
 		n : Vector3 = cross_product((world_coords[2] - world_coords[0]), (world_coords[1] - world_coords[0]) );
 		n = normalize(n);
 
 		intensity : float = dot_product(n, light_dir);
-		// print("screen_coords %\n", screen_coords);
 		if intensity > 0 {
 			intensity_color := Vector4.{intensity * 255, intensity * 255, intensity * 255, 255};
 			triangle(screen_coords[0], screen_coords[1], screen_coords[2], img, intensity_color, zbuffer);
@@ -172,7 +189,7 @@ Image :: struct {
 	width:		int;
 	height:		int;
 	num_chans:	int;
-	pixels:		[..]u8;
+	pixels:		[]u8;
 }
 
 Mesh :: struct {
@@ -187,18 +204,29 @@ world_2_screen :: (v : Vector3, width : int, height : int) -> Vector3 {
 }
 
 create_image :: (width : int, height:int, num_chans:int) -> Image {
-	pixels :[..]u8;
-	for 0..(width * height * num_chans){
-		array_add(*pixels, 0);
-	}
+	pixels :[]u8;
+	pixels.data = alloc (size_of(u8) * width * height * num_chans);
+	pixels.count = width * height * num_chans;
+	// for 0..((width * height * num_chans)){
+		// pixels[it] = 0;
+	// }
+
+	// pixels :[..]u8;
+	// for 0..(width * height * num_chans * size_of(u8)){
+	// 	array_add(*pixels, 0);
+	// }
 	return Image.{width, height, num_chans, pixels};
 }
 
 set_pixel :: (img: Image, x: int, y: int, color: Vector4){
 	index: int = y * img.width * img.num_chans + x * img.num_chans;
+	// print("index: %\n", index);
+	index_limit := width * height * num_chans;
+	if index < index_limit { 
 	img.pixels[index + 0] = cast(u8)color.x;
 	img.pixels[index + 1] = cast(u8)color.y;
 	img.pixels[index + 2] = cast(u8)color.z;
+	}
 }
 
 draw_line :: (x0: int, y0: int, x1: int, y1: int, img: Image, color: Vector4){
@@ -296,11 +324,13 @@ triangle :: (t0: Vector3, t1: Vector3, t2: Vector3, img: Image, color: Vector4, 
 	if t1.y > t2.y Swap(*t1, *t2);
 	total_height := t2.y - t0.y;
 
+
+
 	for i: 0..cast(int)total_height {
 		second_half :bool = cast(bool)(ifx cast(float)i > (t1.y - t0.y) || t1.y == t0.y then 1 else 0);
 		segment_height := ifx second_half then t2.y - t1.y else t1.y - t0.y;
 		alpha :float = cast(float)i/ total_height;
-		beta :float = (i - ( ifx second_half then t1.y - t0.y else 0 )) / segment_height;
+		beta :float = (cast(float)i - ( ifx second_half then t1.y - t0.y else 0 )) / segment_height;
 		A :Vector3 = t0 + (t2 - t0) * alpha;
 		B :Vector3 = ifx second_half then t1 + (t2 - t1) * beta else t0 + (t1 - t0) * beta;
 
@@ -310,8 +340,9 @@ triangle :: (t0: Vector3, t1: Vector3, t2: Vector3, img: Image, color: Vector4, 
 			phi : float = ifx B.x == A.x then 1.0 else cast(float)(j - A.x) / cast(float)(B.x - A.x);
 			P :Vector3 = A + (B - A) * phi;
 			idx : int = j + cast(int)(t0.y + i) * width;
-			if zbuffer[idx] < P.z {
-				zbuffer[idx] = P.z;
+			if zbuffer[idx] < cast(float)P.z {
+				zbuffer[idx] = cast(float)P.z;
+				// print("idx: % P.x: %, P.y %\n", idx, P.x, P.y );
 				set_pixel(img, cast(int)P.x, cast(int)P.y, color);
 			}
 		}
@@ -351,3 +382,34 @@ barycentric_2d :: (pts :*Vec2i, P :Vec2i) -> Vector3 {
 	if abs(u.z) < 1 return Vector3.{-1, 1, 1};
 	return Vector3.{1 - (u.x + u.y) / u.z, u.y / u.z, u.x / u.z};
 }
+
+Vector3i :: struct {
+    x, y, z: int;
+
+#place x;
+    component: [3] int = ---;
+}
+
+operator - :: (a: Vector3i, b: Vector3i) -> Vector3i {
+    return .{a.x-b.x, a.y-b.y, a.z-b.z};
+}
+
+operator - :: (a: Vector3i) -> Vector3i {
+    return .{-a.x, -a.y, -a.z};
+}
+
+operator + :: (a: Vector3i, b: Vector3i) -> Vector3i {
+    return .{a.x+b.x, a.y+b.y, a.z+b.z};
+}
+
+operator * :: (a: Vector3i, b: Vector3i) -> Vector3i {
+    return .{a.x*b.x, a.y*b.y, a.z*b.z};
+}
+
+operator * :: (a: Vector3i, k: int) -> Vector3i  #symmetric {
+    return .{a.x*k, a.y*k, a.z*k};
+}    
+
+operator * :: (a: Vector3i, k: float64) -> Vector3i  #symmetric {
+    return .{xx(a.x*k), xx(a.y*k), xx(a.z*k)};
+} 
