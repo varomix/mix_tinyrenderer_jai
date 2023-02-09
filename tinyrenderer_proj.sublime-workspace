@@ -1,0 +1,1204 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"toke",
+				"token_1_3"
+			],
+			[
+				"Tok",
+				"token_1_2"
+			],
+			[
+				"inclu",
+				"include"
+			],
+			[
+				"inte",
+				"intensity_color"
+			],
+			[
+				"glm_vec3_no",
+				"glm_vec3_normalize"
+			],
+			[
+				"glm_vec3",
+				"glm_ivec3_sub"
+			],
+			[
+				"INT",
+				"INT_MIN"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"swa",
+				"swap_ivec3"
+			],
+			[
+				"BOP",
+				"BOP2"
+			],
+			[
+				"glm_ivec3_su",
+				"glm_ivec3_sub"
+			],
+			[
+				"glm_ive",
+				"glm_ivec3_copy"
+			],
+			[
+				"glm_ivec",
+				"glm_ivec3_copy"
+			],
+			[
+				"glm_ivec3_",
+				"glm_ivec3_copy"
+			],
+			[
+				"Vec",
+				"vec4"
+			],
+			[
+				"glm",
+				"glm_vec3_copy"
+			],
+			[
+				"ve",
+				"verts"
+			],
+			[
+				"ato",
+				"atoi"
+			],
+			[
+				"vec",
+				"vec3"
+			],
+			[
+				"str",
+				"strtok"
+			],
+			[
+				"CAMER",
+				"CAMERA_ORBITAL"
+			],
+			[
+				"CAMERA",
+				"CAMERA_FIRST_PERSON"
+			],
+			[
+				"CAME",
+				"CAMERA_THIRD_PERSON"
+			],
+			[
+				"CAM",
+				"CAMERA_ORBITAL"
+			],
+			[
+				"DrawCir",
+				"DrawCircle3D"
+			],
+			[
+				"setCamera",
+				"SetCameraAltControl"
+			],
+			[
+				"CAMERA_",
+				"CAMERA_FREE"
+			],
+			[
+				"CA",
+				"CAMERA_ORBITAL"
+			],
+			[
+				"Begin",
+				"BeginMode3D"
+			],
+			[
+				"the",
+				"theta_val"
+			],
+			[
+				"thet",
+				"theta_val"
+			],
+			[
+				"freq",
+				"freq_y"
+			],
+			[
+				"GetMose",
+				"GetMouseY"
+			],
+			[
+				"getMouse",
+				"GetMouseY"
+			],
+			[
+				"DrawLine",
+				"DrawLineEx"
+			],
+			[
+				"rlDrawRnder",
+				"rlDrawRenderBatchActive"
+			],
+			[
+				"rg",
+				"rlgl.h\""
+			],
+			[
+				"ball",
+				"ballX"
+			],
+			[
+				"strip",
+				"DrawLineStrip"
+			],
+			[
+				"de",
+				"density"
+			],
+			[
+				"mul",
+				"mult_t"
+			],
+			[
+				"mult",
+				"mult_txt"
+			],
+			[
+				"mutl",
+				"mult_txt"
+			],
+			[
+				"IsKe",
+				"IsKeyPressed"
+			],
+			[
+				"time",
+				"time_t"
+			],
+			[
+				"s",
+				"square_size"
+			],
+			[
+				"incl",
+				"include"
+			],
+			[
+				"GuiSlider",
+				"GuiSliderBar"
+			],
+			[
+				"ray",
+				"raygui.h\""
+			],
+			[
+				"DA",
+				"DARKGRAY"
+			],
+			[
+				"DrawCircle",
+				"DrawCircle"
+			],
+			[
+				"ra",
+				"radius"
+			],
+			[
+				"DAR",
+				"DARKGRAY"
+			],
+			[
+				"include",
+				"include"
+			],
+			[
+				"uint",
+				"u_int8_t"
+			],
+			[
+				"includ",
+				"include"
+			],
+			[
+				"main",
+				"mainWindowDelegate"
+			],
+			[
+				"makeKey",
+				"makeKeyAndOrderFront:"
+			],
+			[
+				"NSWindowStyle",
+				"NSWindowStyleMaskClosable"
+			],
+			[
+				"NSWin",
+				"NSWindowStyleMask"
+			],
+			[
+				"init",
+				"initialFrame"
+			],
+			[
+				"initWit",
+				"initWithContentRect:"
+			],
+			[
+				"Glo",
+				"GlobalRenderHeight"
+			],
+			[
+				"Glon",
+				"GlobalRenderWidth"
+			],
+			[
+				"Hand",
+				"HandmadeMainWindowDelegate"
+			],
+			[
+				"A",
+				"AppKit.h>"
+			],
+			[
+				"App",
+				"AppKit/"
+			],
+			[
+				"p",
+				"p_min"
+			],
+			[
+				"ImDrawList_Add",
+				"ImDrawList_AddNgon"
+			],
+			[
+				"ImDrawList_AddPo",
+				"ImDrawList_AddConvexPolyFilled"
+			],
+			[
+				"ImDrawList_AddLi",
+				"ImDrawList_AddPolyline"
+			],
+			[
+				"igColorCon",
+				"igColorConvertFloat4ToU32"
+			],
+			[
+				"ImDraw",
+				"ImDrawList_AddCircle"
+			],
+			[
+				"convetrt",
+				"igColorConvertFloat4ToU32"
+			],
+			[
+				"cu",
+				"cur_pos"
+			],
+			[
+				"igGetCu",
+				"igGetCursorPos"
+			],
+			[
+				"ImVe",
+				"ImVec2"
+			],
+			[
+				"igGetDraw",
+				"igGetWindowDrawList"
+			],
+			[
+				"igText",
+				"igTextV"
+			],
+			[
+				"sg_be",
+				"sg_begin_default_pass"
+			],
+			[
+				"SG_VERTE",
+				"SG_VERTEXFORMAT_FLOAT4"
+			],
+			[
+				"ATTR_vs",
+				"ATTR_vs_color0"
+			],
+			[
+				"SG_VERTEXFOR",
+				"SG_VERTEXFORMAT_FLOAT3"
+			],
+			[
+				"sg_pipe",
+				"sg_pipeline_desc"
+			],
+			[
+				"sg_query",
+				"sg_query_backend"
+			],
+			[
+				"soko",
+				"sokol_app.h\""
+			],
+			[
+				"colo",
+				"color0"
+			],
+			[
+				"CMAKE_SOUR",
+				"CMAKE_CURRENT_SOURCE_DIR"
+			],
+			[
+				"add_de",
+				"add_dependencies"
+			],
+			[
+				"CMAKE_CURR",
+				"CMAKE_CURRENT_SOURCE_DIR"
+			],
+			[
+				"add_c",
+				"add_custom_target"
+			],
+			[
+				"COMPI",
+				"COMPILE_OPTIONS"
+			],
+			[
+				"__db",
+				"__dbgui_event"
+			],
+			[
+				"__dbgui",
+				"__dbgui_shutdown"
+			],
+			[
+				"sg_begin",
+				"sg_begin_default_pass"
+			],
+			[
+				"db",
+				"dbgui/"
+			],
+			[
+				"in",
+				"include"
+			],
+			[
+				"PROJE",
+				"PROJECT_NAME"
+			],
+			[
+				"targe",
+				"target_link_libraries"
+			],
+			[
+				"cmi",
+				"cimgui"
+			],
+			[
+				"im",
+				"imgui_impl"
+			],
+			[
+				"ImGui_ImplOpenGl",
+				"ImGui_ImplOpenGL3_Shutdown"
+			],
+			[
+				"back",
+				"backup_current_window"
+			],
+			[
+				"SDL_GL_Get",
+				"SDL_GL_GetCurrentContext"
+			],
+			[
+				"ImGuiConfig",
+				"ImGuiConfigFlags_ViewportsEnable"
+			],
+			[
+				"clea",
+				"clear_color"
+			],
+			[
+				"clera",
+				"clear_color"
+			],
+			[
+				"cle",
+				"clear_color"
+			],
+			[
+				"igGet",
+				"igGetIO"
+			],
+			[
+				"clear",
+				"clear_color"
+			],
+			[
+				"show",
+				"show_demo_window"
+			],
+			[
+				"ImGui_Impl",
+				"ImGui_ImplOpenGL3_NewFrame"
+			],
+			[
+				"SDL_GetWin",
+				"SDL_GetWindowID"
+			],
+			[
+				"ImVec",
+				"ImVec4"
+			],
+			[
+				"igStyle",
+				"igStyleColorsDark"
+			],
+			[
+				"ImGuiConfi",
+				"ImGuiConfigFlags_ViewportsEnable"
+			],
+			[
+				"ImGuiConfigFlags_Nav",
+				"ImGuiConfigFlags_NavNoCaptureKeyboard"
+			],
+			[
+				"SDL_GL_Set",
+				"SDL_GL_SetSwapInterval"
+			],
+			[
+				"SDL_WIN",
+				"SDL_WINDOWPOS_CENTERED"
+			],
+			[
+				"SDL_WINDO",
+				"SDL_WINDOWPOS_CENTERED"
+			],
+			[
+				"SDL_GL_STE",
+				"SDL_GL_STENCIL_SIZE"
+			],
+			[
+				"SDL_HINT_RENDER",
+				"SDL_HINT_RENDER_DRIVER"
+			],
+			[
+				"SDL_Set",
+				"SDL_SetHint"
+			],
+			[
+				"SDL_GL_CONTEXT_F",
+				"SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG"
+			],
+			[
+				"SDL_GL_CON",
+				"SDL_GL_CONTEXT_PROFILE_CORE"
+			],
+			[
+				"SDL_GL_CONTEXT_PRO",
+				"SDL_GL_CONTEXT_PROFILE_MASK"
+			],
+			[
+				"SDL_Lo",
+				"SDL_Log"
+			],
+			[
+				"ig",
+				"igColorEdit3"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.jai",
+			"settings":
+			{
+				"buffer_size": 12501,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Default",
+					""
+				],
+				[
+					"Default",
+					"cimgui"
+				],
+				[
+					"Default",
+					"demo"
+				],
+				[
+					"Default",
+					"Run: demo"
+				],
+				[
+					"Default",
+					"Run under LLDB: demo"
+				],
+				[
+					"Default",
+					"sokol"
+				],
+				[
+					"Default",
+					"ctest"
+				]
+			],
+			[
+				"Default",
+				"Run: demo"
+			]
+		],
+		[
+			[
+				[
+					"Default",
+					""
+				],
+				[
+					"Default",
+					"hello"
+				],
+				[
+					"Default",
+					"Run: hello"
+				],
+				[
+					"Default",
+					"Run under LLDB: hello"
+				],
+				[
+					"Default",
+					"ctest"
+				]
+			],
+			[
+				"Default",
+				"Run: hello"
+			]
+		],
+		[
+			[
+				[
+					"Default",
+					""
+				],
+				[
+					"Default",
+					"mix_contour"
+				],
+				[
+					"Default",
+					"mix_contour_app"
+				],
+				[
+					"Default",
+					"Run: mix_contour_app"
+				],
+				[
+					"Default",
+					"Run under LLDB: mix_contour_app"
+				],
+				[
+					"Default",
+					"ctest"
+				]
+			],
+			[
+				"Default",
+				"Run: mix_contour_app"
+			]
+		],
+		[
+			[
+				[
+					"Default",
+					""
+				],
+				[
+					"Default",
+					"mix_tinyrenderer_c"
+				],
+				[
+					"Default",
+					"Run: mix_tinyrenderer_c"
+				],
+				[
+					"Default",
+					"Run under LLDB: mix_tinyrenderer_c"
+				],
+				[
+					"Default",
+					"ctest"
+				]
+			],
+			[
+				"Default",
+				"Run: mix_tinyrenderer_c"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C17 - Run"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C2x - Run"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C2x + Raylib - Run :: LINUX ::"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C2x + Raylib - Run :: MACOSX ::"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C2x + Raylib_DEV - Run :: MACOSX ::"
+				]
+			],
+			[
+				"Packages/C++/C Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/C_std2x.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C17 - Run"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C2x - Run"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C2x + Raylib - Run :: LINUX ::"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C2x + Raylib - Run :: MACOSX ::"
+				]
+			],
+			[
+				"Packages/User/C_std2x.sublime-build",
+				"C2x + Raylib - Run :: MACOSX ::"
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/C_std2x.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C17 - Run"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C2x - Run"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C2x + Raylib - Run :: LINUX ::"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C2x + Raylib - Run :: MACOSX ::"
+				],
+				[
+					"Packages/User/C_std2x.sublime-build",
+					"C2x + Raylib_DEV - Run :: MACOSX ::"
+				]
+			],
+			[
+				"Packages/User/C_std2x.sublime-build",
+				"C2x + Raylib_DEV - Run :: MACOSX ::"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"term",
+				"Terminus: Toggle Panel"
+			],
+			[
+				"con",
+				"CMakeBuilder: Configure"
+			],
+			[
+				"open",
+				"Debugger: Open"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"conf",
+				"CMakeBuilder: Configure"
+			],
+			[
+				"confi",
+				"CMakeBuilder: Configure"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"cmake",
+				"CMakeBuilder: New Project..."
+			],
+			[
+				"schem",
+				"UI: Select Color Scheme"
+			],
+			[
+				"config",
+				"CMakeBuilder: Configure"
+			],
+			[
+				"reloa",
+				"NeoVintageous: Reload RC File"
+			],
+			[
+				"cmakebui",
+				"CMakeBuilder: Diagnose"
+			],
+			[
+				"termin",
+				"Terminus: Toggle Panel"
+			],
+			[
+				"terminus",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"run",
+				"Build With: Default - Run: 2d_shootEmUp_tutorial"
+			],
+			[
+				"termi",
+				"Terminus: Toggle Panel"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"terminu",
+				"Terminus: Toggle Panel"
+			],
+			[
+				"clang",
+				"Clang Format: Select Style"
+			],
+			[
+				"clan",
+				"Clang Format: Format Selection"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"color",
+				"UI: Select Color Scheme"
+			],
+			[
+				"them",
+				"UI: Select Theme"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/varomix/dev/JAI_DEV/mix_tinyrenderer_jai"
+	],
+	"file_history":
+	[
+		"/Users/varomix/dev/C_DEV/mix_tinyrenderer_c/stb/deprecated/stb.h",
+		"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdio.h",
+		"/Users/varomix/dev/C_DEV/mix_tinyrenderer_c/cglm/types.h",
+		"/Users/varomix/.emacs.d/.local/logs/cli.doom.230201224912.77478.error",
+		"/Users/varomix/homebrew/include/raylib.h",
+		"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/math.h",
+		"/Users/varomix/SynologyDrive/MixCollective/MIX_Training/C_Programming_Course/raygui.h",
+		"/Users/varomix/homebrew/Cellar/raylib/4.2.0/include/raylib.h",
+		"/Users/varomix/dev/C_DEV/main.zig",
+		"/Users/varomix/dev/mixOS/boot.asm",
+		"/Users/varomix/.ssh/config",
+		"/Users/varomix/.zshrc",
+		"/Users/varomix/dev/C_DEV/sokol_proj/sokol_proj/triangle.c",
+		"/Users/varomix/dev/C_DEV/sokol_proj/sokol_proj/src/triangle-sapp.glsl",
+		"/Users/varomix/dev/C_DEV/MIX_Contour/include/cimgui/cimgui.h",
+		"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Versions/A/Headers/gl.h",
+		"/Users/varomix/dev/C_DEV/MIX_Contour/build/Makefile",
+		"/Users/varomix/dev/C_DEV/MIX_Contour/OLD_CMakeLists.txt",
+		"/Users/varomix/dev/C_DEV/MIX_Contour/CMakeLists.txt",
+		"/Users/varomix/dev/C_DEV/MIX_Contour/_OLD_CMakeLists.txt",
+		"/Users/varomix/dev/C_DEV/MIX_Contour/include/cimgui/generator/output/cimgui_impl.h",
+		"/Users/varomix/dev/C_DEV/MIX_Contour/build/compile_commands.json",
+		"/Users/varomix/dev/C_DEV/MIX_Contour/contour.sublime-project",
+		"/Users/varomix/homebrew/include/SDL2/SDL_video.h",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/structs.h",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/init.c",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/common.h",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/defs.h",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/draw.h",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/input.h",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/init.h",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/CMakeLists.txt",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/draw.c",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/sdl.sublime-project",
+		"/Users/varomix/Library/Application Support/Sublime Text 3/Packages/User/clang_format_custom.sublime-settings",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/build/Makefile",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/build/compile_commands.json",
+		"/Users/varomix/dev/C_DEV/2d_shootEmUp_tutorial/build/2d_shootEmUp_tutorial",
+		"/Users/varomix/Library/Application Support/Sublime Text 3/Packages/User/h_guard_snippet.sublime-snippet",
+		"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdlib.h",
+		"/Users/varomix/Library/Application Support/Sublime Text 3/Packages/User/clang_format.sublime-settings",
+		"/Users/varomix/Library/Application Support/Sublime Text 3/Packages/Clang Format/clang_format.sublime-settings",
+		"/Users/varomix/dev/ODIN_DEV/odin_test_lab/sdl_lab.odin",
+		"/Users/varomix/.zshrc.pre-oh-my-zsh",
+		"/Users/varomix/.zshrc_profile",
+		"/Users/varomix/.zprofile",
+		"/Users/varomix/dev/ODIN_DEV/odin_test_lab/ols.json",
+		"/Users/varomix/dev/ODIN_DEV/odin_test_lab/hello.odin",
+		"/Users/varomix/dev/ODIN_DEV/Odin/examples/all/all_vendor.odin"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 149.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.jai",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12501,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"line_numbers": true,
+							"lsp_uri": "file:///Users/varomix/dev/JAI_DEV/mix_tinyrenderer_jai/main.jai",
+							"syntax": "Packages/JaiTools/Jai.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false,
+							"vintage_lines.line": -1,
+							"vintage_lines.lines": 414,
+							"vintage_lines.mode": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 39.0
+	},
+	"input":
+	{
+		"height": 71.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.LSP Log Panel":
+	{
+		"height": 0.0
+	},
+	"output.Terminus":
+	{
+		"height": 198.0
+	},
+	"output.demo":
+	{
+		"height": 180.0
+	},
+	"output.diagnostics":
+	{
+		"height": 192.0
+	},
+	"output.exec":
+	{
+		"height": 204.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.hello":
+	{
+		"height": 234.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.mix_contour_app":
+	{
+		"height": 139.0
+	},
+	"output.mix_tinyrenderer_c":
+	{
+		"height": 294.0
+	},
+	"output.references":
+	{
+		"height": 192.0
+	},
+	"pinned_build_system": "Packages/C++/C Single File.sublime-build",
+	"project": "tinyrenderer_proj.sublime-project",
+	"replace":
+	{
+		"height": 74.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"main",
+				"main.jai"
+			],
+			[
+				"cm",
+				"CMakeLists.txt"
+			],
+			[
+				"",
+				"boot.asm"
+			],
+			[
+				"inp",
+				"input.c"
+			],
+			[
+				"draw",
+				"draw.c"
+			],
+			[
+				"cmake",
+				"CMakeLists.txt"
+			],
+			[
+				"comm",
+				"common.h"
+			],
+			[
+				"pro",
+				"sdl.sublime-project"
+			],
+			[
+				"ini",
+				"init.c"
+			],
+			[
+				".h",
+				"defs.h"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 222.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
