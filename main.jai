@@ -14,109 +14,17 @@ light_dir :: Vector3.{0, 0, -1};
 main :: () {
 	print("\n===================================\n");
 
-	// width :s32 = 512;
-	// height :s32 = 512;
-	// num_chans := 3;
-
 	red := Vector4.{255, 0, 0, 255};
 	white := Vector4.{255, 255, 255, 255};
 	green := Vector4.{0, 255, 0, 255};
 	cyan := Vector4.{0, 255, 255, 255};
-
-	// print("content of cube\n%\n", obj_data);
-
-	// pixels_amount :: width * height * num_chans;	
-	// img := Image.{width, height, num_chans, pixels};
-
-	// print("Color indexing % % %\n", red.x, red.y, red.z);
-
-	// output_buffer : []s32;
-    // output_buffer.data = alloc (size_of (s32) * width * height * num_chans);
-    // output_buffer.count = width * height * num_chans;
-
-    // for i : 0..output_buffer.count - 1
-    // {
-    //     output_buffer[i] = 0;
-    // }
-
 	img := create_image(width, height, num_chans);
 
     // model := parse_obj("obj/cube.obj");
+    // model := parse_obj("obj/cube_extruded.obj");
     model := parse_obj("obj/african_head.obj");
     // model := parse_obj("obj/susanne.obj");
     // model := parse_obj("obj/gear.obj");
-
-    // for face, i: model.faces {
-    // 	// face is a [..]Vector3
-    // 	// is there a better way to implement this part?
-    // 	// making the Vector into an array
-    // 	_face :[3]int;
-    // 	_face[0] = cast(int)face.x;
-    // 	_face[1] = cast(int)face.y;
-    // 	_face[2] = cast(int)face.z;
-
-    // 	for 0..2 {
-    // 		v0 := model.verts[_face[it]];
-    // 		v1 := model.verts[_face[(it + 1) % 3]];
-
-    // 		x0 := (v0.x + 1.0) * (width - 1) / 2.0;
-    // 		y0 := (v0.y + 1.0) * (height - 1) / 2.0;
-    // 		x1 := (v1.x + 1.0) * (width - 1) / 2.0;
-    // 		y1 := (v1.y + 1.0) * (height - 1) / 2.0;
-
-    // 		draw_line(cast(int)x0, cast(int)y0, cast(int)x1, cast(int)y1, img, cyan);
-    // 	}
-    // }
-
-    // print("numfaces: %\n", model.faces.count);
-
-    // draw_line(13, 20, 80, 40, img, white);
-    // draw_line(20, 13, 40, 80, img, red);
-    // draw_line(80, 40, 13, 20, img, red);
-	// set_pixel(img, 50, 50, red);
-
-	// Draw triangles
-	// t0 := Vector2.[Vector2.{10,70},   Vector2.{50,160},  Vector2.{70, 80}];
-	// t1 := Vector2.[Vector2.{180,50},  Vector2.{150,1},   Vector2.{70, 180}];
-	// t2 := Vector2.[Vector2.{180,150}, Vector2.{120,160}, Vector2.{130, 180}];
-
-	// triangle(t0[0], t0[1], t0[2], img, red);
-	// triangle(t1[0], t1[1], t1[2], img, white);
-	// triangle(t2[0], t2[1], t2[2], img, green);
-
-	// // create a light
-	// light_dir := Vector3.{0, 0, -1};
-
-	// // Draw Flat shading render
-	// for face, i: model.faces {
-	// 	// print("face: %\n", face);
-	// 	// print("Face index: %\n", face.component[1]);
-	// 	screen_coords :[3]Vector2;
-	// 	world_coords :[3]Vector3;
-	// 	for j: 0..2 {
-	// 		// world_coords := model.verts[cast(int)face.component[j]];
-	// 		v := model.verts[cast(int)face.component[j]];
-	// 		screen_coords[j] = Vector2.{(v.x + 1) * width /2, (v.y + 1) * height / 2};
-	// 		world_coords[j] = v;
-	// 	}
-	// 	// rand_color := Vector4.{random_get_within_range(1, 255), random_get_within_range(1, 255), random_get_within_range(1, 255), 255}; 
-	// 	n1 := world_coords[2] - world_coords[0];
-	// 	n2 := world_coords[1] - world_coords[0];
-	// 	n :Vector3 = cross_product(n1, n2); 
-	// 	normalize(*n);
-	// 	// print("normal: %\n", n);
-	// 	intensity :float = dot_product(n, light_dir);
-	// 	// print("intensity %\n", intensity);
-	// 	shade_color := Vector4.{intensity * 255, intensity * 255, intensity * 255, 255}; 
-	// 	if intensity > 0 {
-	// 		triangle(screen_coords[0], screen_coords[1], screen_coords[2], img, shade_color); 
-	// 	}
-	// }
-	// a_float := 1.0;
-	// triangle_other(*testing, *a_float, img, red);
-
-    // output_buffer.data = alloc (size_of (s32) * width * height * num_chans);
-    // output_buffer.count = width * height * num_chans;
 
 	// zbuffer : []float;
     // zbuffer.data = alloc (size_of (float) * width * height * num_chans);
@@ -130,17 +38,12 @@ main :: () {
 		zbuffer[it] = -FLOAT32_MIN;
 	}
 
-	// for < 0..(width*height) {
-		// zbuffer[it] = FLOAT32_MAX;
-	// }
-
 	print("model vertices: %\n", model.verts.count);
 	print("model faces: %\n", model.faces.count);
 
-	print("image pixels: %\n", img.pixels.count);
 	rand_color := Vector4.{random_get_within_range(1, 255), random_get_within_range(1, 255), random_get_within_range(1, 255), 255}; 
 	// for face, i: model.faces {
-		for i: 0..(model.faces.count-1) {
+	for i: 0..(model.faces.count - 1) {
 		face : Vector3 = model.faces[i];
 		// print("face: %\n", face);
 		// print("Face index: %\n", face.component[1]);
@@ -151,7 +54,7 @@ main :: () {
 			v : Vector3 = model.verts[cast(int)face.component[j]];
 			// print("% % : v: %\n", i, j, v);
 			// print("depth: %\n", (v.z + 1) * (depth / 2.0));
-			screen_coords[j] = Vector3.{cast(float)(floor((v.x + 1) * width /2.0)), cast(float)((v.y + 1) * height / 2.0), cast(float)((v.z + 1) * depth / 2.0)};
+			screen_coords[j] = Vector3.{cast(float)(floor((v.x + 1) * width /2.0)), cast(float)(floor((v.y + 1) * height / 2.0)), cast(float)(floor((v.z + 1) * depth / 2.0))};
 			// print("screen_coords 1 %\n", screen_coords[0]);
 			// print("screen_coords 2 %\n", screen_coords[1]);
 			// print("screen_coords 3 %\n", screen_coords[2]);
@@ -220,12 +123,11 @@ create_image :: (width : int, height:int, num_chans:int) -> Image {
 
 set_pixel :: (img: Image, x: int, y: int, color: Vector4){
 	index: int = y * img.width * img.num_chans + x * img.num_chans;
-	// print("index: %\n", index);
 	index_limit := width * height * num_chans;
 	if index < index_limit { 
-	img.pixels[index + 0] = cast(u8)color.x;
-	img.pixels[index + 1] = cast(u8)color.y;
-	img.pixels[index + 2] = cast(u8)color.z;
+		img.pixels[index + 0] = cast(u8)color.x;
+		img.pixels[index + 1] = cast(u8)color.y;
+		img.pixels[index + 2] = cast(u8)color.z;
 	}
 }
 
@@ -317,14 +219,13 @@ parse_obj :: (obj_path: string) -> Mesh {
 
 // TODO: Fix float errors, we need vector of ints
 triangle :: (t0: Vector3, t1: Vector3, t2: Vector3, img: Image, color: Vector4, zbuffer: []float){
-	if t0.y == t1.y && t0.y == 2 return;	// I dont care about degenerate triangles
+	if t0.y == t1.y && t0.y == t2.y return;	// I dont care about degenerate triangles
 	// sort the vertices, t0, t1, t2 lower-to-upper (bubblesort yay!)
 	if t0.y > t1.y Swap(*t0, *t1);
 	if t0.y > t2.y Swap(*t0, *t2);
 	if t1.y > t2.y Swap(*t1, *t2);
+
 	total_height := t2.y - t0.y;
-
-
 
 	for i: 0..cast(int)total_height {
 		second_half :bool = cast(bool)(ifx cast(float)i > (t1.y - t0.y) || t1.y == t0.y then 1 else 0);
@@ -342,7 +243,6 @@ triangle :: (t0: Vector3, t1: Vector3, t2: Vector3, img: Image, color: Vector4, 
 			idx : int = j + cast(int)(t0.y + i) * width;
 			if zbuffer[idx] < cast(float)P.z {
 				zbuffer[idx] = cast(float)P.z;
-				// print("idx: % P.x: %, P.y %\n", idx, P.x, P.y );
 				set_pixel(img, cast(int)P.x, cast(int)P.y, color);
 			}
 		}

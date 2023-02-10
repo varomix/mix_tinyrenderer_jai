@@ -520,12 +520,216 @@
 	"buffers":
 	[
 		{
+			"contents": "#import \"Basic\";\n#import \"String\";\n#import \"File\";\n#import \"Math\";\n#import \"Random\";\n#import \"stb_image_write\";\n\nwidth :: 512;\nheight :: 512;\ndepth :: 255;\nnum_chans :: 3;\nlight_dir :: Vector3.{0, 0, -1};\n\nmain :: () {\n\tprint(\"\\n===================================\\n\");\n\n\t// width :s32 = 512;\n\t// height :s32 = 512;\n\t// num_chans := 3;\n\n\tred := Vector4.{255, 0, 0, 255};\n\twhite := Vector4.{255, 255, 255, 255};\n\tgreen := Vector4.{0, 255, 0, 255};\n\tcyan := Vector4.{0, 255, 255, 255};\n\n\t// print(\"content of cube\\n%\\n\", obj_data);\n\n\t// pixels_amount :: width * height * num_chans;\t\n\t// img := Image.{width, height, num_chans, pixels};\n\n\t// print(\"Color indexing % % %\\n\", red.x, red.y, red.z);\n\n\t// output_buffer : []s32;\n    // output_buffer.data = alloc (size_of (s32) * width * height * num_chans);\n    // output_buffer.count = width * height * num_chans;\n\n    // for i : 0..output_buffer.count - 1\n    // {\n    //     output_buffer[i] = 0;\n    // }\n\n\timg := create_image(width, height, num_chans);\n\n    // model := parse_obj(\"obj/cube.obj\");\n    model := parse_obj(\"obj/african_head.obj\");\n    // model := parse_obj(\"obj/susanne.obj\");\n    // model := parse_obj(\"obj/gear.obj\");\n\n    // for face, i: model.faces {\n    // \t// face is a [..]Vector3\n    // \t// is there a better way to implement this part?\n    // \t// making the Vector into an array\n    // \t_face :[3]int;\n    // \t_face[0] = cast(int)face.x;\n    // \t_face[1] = cast(int)face.y;\n    // \t_face[2] = cast(int)face.z;\n\n    // \tfor 0..2 {\n    // \t\tv0 := model.verts[_face[it]];\n    // \t\tv1 := model.verts[_face[(it + 1) % 3]];\n\n    // \t\tx0 := (v0.x + 1.0) * (width - 1) / 2.0;\n    // \t\ty0 := (v0.y + 1.0) * (height - 1) / 2.0;\n    // \t\tx1 := (v1.x + 1.0) * (width - 1) / 2.0;\n    // \t\ty1 := (v1.y + 1.0) * (height - 1) / 2.0;\n\n    // \t\tdraw_line(cast(int)x0, cast(int)y0, cast(int)x1, cast(int)y1, img, cyan);\n    // \t}\n    // }\n\n    // print(\"numfaces: %\\n\", model.faces.count);\n\n    // draw_line(13, 20, 80, 40, img, white);\n    // draw_line(20, 13, 40, 80, img, red);\n    // draw_line(80, 40, 13, 20, img, red);\n\t// set_pixel(img, 50, 50, red);\n\n\t// Draw triangles\n\t// t0 := Vector2.[Vector2.{10,70},   Vector2.{50,160},  Vector2.{70, 80}];\n\t// t1 := Vector2.[Vector2.{180,50},  Vector2.{150,1},   Vector2.{70, 180}];\n\t// t2 := Vector2.[Vector2.{180,150}, Vector2.{120,160}, Vector2.{130, 180}];\n\n\t// triangle(t0[0], t0[1], t0[2], img, red);\n\t// triangle(t1[0], t1[1], t1[2], img, white);\n\t// triangle(t2[0], t2[1], t2[2], img, green);\n\n\t// // create a light\n\t// light_dir := Vector3.{0, 0, -1};\n\n\t// // Draw Flat shading render\n\t// for face, i: model.faces {\n\t// \t// print(\"face: %\\n\", face);\n\t// \t// print(\"Face index: %\\n\", face.component[1]);\n\t// \tscreen_coords :[3]Vector2;\n\t// \tworld_coords :[3]Vector3;\n\t// \tfor j: 0..2 {\n\t// \t\t// world_coords := model.verts[cast(int)face.component[j]];\n\t// \t\tv := model.verts[cast(int)face.component[j]];\n\t// \t\tscreen_coords[j] = Vector2.{(v.x + 1) * width /2, (v.y + 1) * height / 2};\n\t// \t\tworld_coords[j] = v;\n\t// \t}\n\t// \t// rand_color := Vector4.{random_get_within_range(1, 255), random_get_within_range(1, 255), random_get_within_range(1, 255), 255}; \n\t// \tn1 := world_coords[2] - world_coords[0];\n\t// \tn2 := world_coords[1] - world_coords[0];\n\t// \tn :Vector3 = cross_product(n1, n2); \n\t// \tnormalize(*n);\n\t// \t// print(\"normal: %\\n\", n);\n\t// \tintensity :float = dot_product(n, light_dir);\n\t// \t// print(\"intensity %\\n\", intensity);\n\t// \tshade_color := Vector4.{intensity * 255, intensity * 255, intensity * 255, 255}; \n\t// \tif intensity > 0 {\n\t// \t\ttriangle(screen_coords[0], screen_coords[1], screen_coords[2], img, shade_color); \n\t// \t}\n\t// }\n\t// a_float := 1.0;\n\t// triangle_other(*testing, *a_float, img, red);\n\n    // output_buffer.data = alloc (size_of (s32) * width * height * num_chans);\n    // output_buffer.count = width * height * num_chans;\n\n\t// zbuffer : []float;\n    // zbuffer.data = alloc (size_of (float) * width * height * num_chans);\n    // zbuffer.count = width * height * num_chans;\n\n\tzbuffer :[]float;\n\tzbuffer.data = alloc (size_of(float) * width * height * num_chans + 1);\n\tzbuffer.count = width * height * num_chans + 1;\n\tfor 0..((width * height * num_chans)){\n\t\t// array_add(*zbuffer, -FLOAT32_MIN);\n\t\tzbuffer[it] = -FLOAT32_MIN;\n\t}\n\n\t// for < 0..(width*height) {\n\t\t// zbuffer[it] = FLOAT32_MAX;\n\t// }\n\n\tprint(\"model vertices: %\\n\", model.verts.count);\n\tprint(\"model faces: %\\n\", model.faces.count);\n\n\tprint(\"image pixels: %\\n\", img.pixels.count);\n\trand_color := Vector4.{random_get_within_range(1, 255), random_get_within_range(1, 255), random_get_within_range(1, 255), 255}; \n\t// for face, i: model.faces {\n\t\tfor i: 0..(model.faces.count-1) {\n\t\tface : Vector3 = model.faces[i];\n\t\t// print(\"face: %\\n\", face);\n\t\t// print(\"Face index: %\\n\", face.component[1]);\n\t\tscreen_coords : [3]Vector3;\n\t\tworld_coords : [3]Vector3;\n\n\t\tfor j: 0..2 {\n\t\t\tv : Vector3 = model.verts[cast(int)face.component[j]];\n\t\t\t// print(\"% % : v: %\\n\", i, j, v);\n\t\t\t// print(\"depth: %\\n\", (v.z + 1) * (depth / 2.0));\n\t\t\tscreen_coords[j] = Vector3.{cast(float)(floor((v.x + 1) * width /2.0)), cast(float)((v.y + 1) * height / 2.0), cast(float)((v.z + 1) * depth / 2.0)};\n\t\t\t// print(\"screen_coords 1 %\\n\", screen_coords[0]);\n\t\t\t// print(\"screen_coords 2 %\\n\", screen_coords[1]);\n\t\t\t// print(\"screen_coords 3 %\\n\", screen_coords[2]);\n\t\t\tworld_coords[j] = v;\n\t\t}\n\t\tn : Vector3 = cross_product((world_coords[2] - world_coords[0]), (world_coords[1] - world_coords[0]) );\n\t\tn = normalize(n);\n\n\t\tintensity : float = dot_product(n, light_dir);\n\t\tif intensity > 0 {\n\t\t\tintensity_color := Vector4.{intensity * 255, intensity * 255, intensity * 255, 255};\n\t\t\ttriangle(screen_coords[0], screen_coords[1], screen_coords[2], img, intensity_color, zbuffer);\n\t\t}\n\t}\n\n\n\tstbi_flip_vertically_on_write(1);\n\tstbi_write_png(\"output_chapter_03.png\", width, height, 3, img.pixels.data, cast(s32)(width * num_chans));\n\n\t// Dump Z-Buffer (debugging purposes only)\n\tzbimg := create_image(width, height, num_chans);\n\tfor i: 0..(width -1) {\n\t\tfor j: 0..(height -1) {\n\t\t\tset_pixel(zbimg, i, j, Vector4.{zbuffer[i + j * width], zbuffer[i + j * width],zbuffer[i + j * width], 255});\n\t\t}\n\t}\n\n\tstbi_flip_vertically_on_write(1);\n\tstbi_write_png(\"output_depth_chapter_03.png\", width, height, 3, zbimg.pixels.data, cast(s32)(width * num_chans));\n}\n\nVec2i ::[2]int;\n\nImage :: struct {\n\twidth:\t\tint;\n\theight:\t\tint;\n\tnum_chans:\tint;\n\tpixels:\t\t[]u8;\n}\n\nMesh :: struct {\n\tverts:\t\t[..]Vector3;\n\t// faces:\t\t[..]s64;\t\n\tfaces:\t\t[..]Vector3;\t\n\tnum_faces:\tint;\n}\n\nworld_2_screen :: (v : Vector3, width : int, height : int) -> Vector3 {\n\treturn Vector3.{(v.x + 1) *  width/2.0 + 0.5, (v.y + 1) * height / 2.0 + 0.5, v.z};\n}\n\ncreate_image :: (width : int, height:int, num_chans:int) -> Image {\n\tpixels :[]u8;\n\tpixels.data = alloc (size_of(u8) * width * height * num_chans);\n\tpixels.count = width * height * num_chans;\n\t// for 0..((width * height * num_chans)){\n\t\t// pixels[it] = 0;\n\t// }\n\n\t// pixels :[..]u8;\n\t// for 0..(width * height * num_chans * size_of(u8)){\n\t// \tarray_add(*pixels, 0);\n\t// }\n\treturn Image.{width, height, num_chans, pixels};\n}\n\nset_pixel :: (img: Image, x: int, y: int, color: Vector4){\n\tindex: int = y * img.width * img.num_chans + x * img.num_chans;\n\t// print(\"index: %\\n\", index);\n\tindex_limit := width * height * num_chans;\n\tif index < index_limit { \n\timg.pixels[index + 0] = cast(u8)color.x;\n\timg.pixels[index + 1] = cast(u8)color.y;\n\timg.pixels[index + 2] = cast(u8)color.z;\n\t}\n}\n\ndraw_line :: (x0: int, y0: int, x1: int, y1: int, img: Image, color: Vector4){\n\tsteep: bool = false;\n\tif abs(x0 - x1) < abs(y0 - y1) {\n\t\tSwap(*x0, *y0);\n\t\tSwap(*x1, *y1);\n\t\tsteep = true;\n\t}\n\n\tif x0 > x1 {\n\t\tSwap(*x0, *x1);\n\t\tSwap(*y0, *y1);\n\t}\n\n\tdx := x1 - x0;\n\tdy := y1 - y0;\n\tderror2 := abs(dy) * 2;\n\terror2 := 0;\n\ty := y0;\n\t// x := x0;\n\n\tfor x0..x1 {\n\t\tx := it;\n\t\tif steep {\n\t\t\tset_pixel(img, y, x, color);\n\n\t\t} else {\n\t\t\tset_pixel(img, x, y, color);\n\t\t}\n\n\t\terror2 += derror2;\n\t\tif error2 > dx {\n\t\t\ty += ifx y1 > y0 then 1 else -1;\n\t\t\terror2 -= dx * 2;\n\t\t}\n\t}\n}\nparse_obj :: (obj_path: string) -> Mesh {\n\tobj_data, success := read_entire_file(obj_path);\t\n\tlines := split(obj_data, \"\\n\");\n\tmesh: Mesh;\n\n\tif !success {\n\t\tprint(\"couldn't load file: %\\n\", obj_path);\n\t\t// return;\n\t} \n\n\tfor lines {\n\t\t// print(\"line: %\\n\", split(it, \" \"));\n\t\tline_elems := split(it, \" \");\n\t\tif line_elems[0] == \"v\"{\n\t\t\t// print(\"A vertex: %\\n\", it);\n\t\t\tx := string_to_float(line_elems[1]);\n\t\t\ty := string_to_float(line_elems[2]);\n\t\t\tz := string_to_float(line_elems[3]);\n\t\t\tarray_add(*mesh.verts, Vector3.{x, y, z});\n\t\t}\t\n\t\t\n\t\telse if line_elems[0] == \"f\" {\n\t\t\t// print(\"A face: %\\n\", it);\n\n\t\t\tvert1 := split(line_elems[1], \"/\")[0];\n\t\t\tvert2 := split(line_elems[2], \"/\")[0];\n\t\t\tvert3 := split(line_elems[3], \"/\")[0];\n\n\t\t\t// x := to_integer(vert1);\n\t\t\t// y := to_integer(vert2);\n\t\t\t// z := to_integer(vert3);\n\n\t\t\tx := string_to_float(vert1);\n\t\t\ty := string_to_float(vert2);\n\t\t\tz := string_to_float(vert3);\n\n\t\t\t// array_add(*mesh.faces, x);\n\t\t\t// array_add(*mesh.faces, y);\n\t\t\t// array_add(*mesh.faces, z);\n\t\t\tarray_add(*mesh.faces, Vector3.{x - 1 , y - 1, z - 1});\n\t\t}\n\t}\n\n\t// print(\"verts: %\\n\", mesh.verts.count);\n\t// print(\"faces: %\\n\", mesh.faces.count);\n\t// print(\"faces total: %\\n\", mesh.faces.count /3);\n\tmesh.num_faces = mesh.faces.count / 3;\n\treturn mesh;\n}\n\n// TODO: Fix float errors, we need vector of ints\ntriangle :: (t0: Vector3, t1: Vector3, t2: Vector3, img: Image, color: Vector4, zbuffer: []float){\n\tif t0.y == t1.y && t0.y == 2 return;\t// I dont care about degenerate triangles\n\t// sort the vertices, t0, t1, t2 lower-to-upper (bubblesort yay!)\n\tif t0.y > t1.y Swap(*t0, *t1);\n\tif t0.y > t2.y Swap(*t0, *t2);\n\tif t1.y > t2.y Swap(*t1, *t2);\n\ttotal_height := t2.y - t0.y;\n\n\n\n\tfor i: 0..cast(int)total_height {\n\t\tsecond_half :bool = cast(bool)(ifx cast(float)i > (t1.y - t0.y) || t1.y == t0.y then 1 else 0);\n\t\tsegment_height := ifx second_half then t2.y - t1.y else t1.y - t0.y;\n\t\talpha :float = cast(float)i/ total_height;\n\t\tbeta :float = (cast(float)i - ( ifx second_half then t1.y - t0.y else 0 )) / segment_height;\n\t\tA :Vector3 = t0 + (t2 - t0) * alpha;\n\t\tB :Vector3 = ifx second_half then t1 + (t2 - t1) * beta else t0 + (t1 - t0) * beta;\n\n\t\tif A.x > B.x Swap(*A, *B);\n\n\t\tfor j: cast(int)A.x..cast(int)B.x {\n\t\t\tphi : float = ifx B.x == A.x then 1.0 else cast(float)(j - A.x) / cast(float)(B.x - A.x);\n\t\t\tP :Vector3 = A + (B - A) * phi;\n\t\t\tidx : int = j + cast(int)(t0.y + i) * width;\n\t\t\tif zbuffer[idx] < cast(float)P.z {\n\t\t\t\tzbuffer[idx] = cast(float)P.z;\n\t\t\t\t// print(\"idx: % P.x: %, P.y %\\n\", idx, P.x, P.y );\n\t\t\t\tset_pixel(img, cast(int)P.x, cast(int)P.y, color);\n\t\t\t}\n\t\t}\n\t}\n}\n\n// TODO : DELETE THIS, this is the cross product\noperator ^ :: (a :Vector3, b :Vector3) -> Vector3 {\n\treturn Vector3.{cast(float)( (cast(int)a.x) ^ (cast(int)b.x) ),\n\t\t\t\t\tcast(float)( (cast(int)a.y) ^ (cast(int)b.y) ),\n\t\t\t\t\tcast(float)( (cast(int)a.z) ^ (cast(int)b.z) )};\n}\n\n\nbarycentric :: (A :Vector3, B :Vector3, C :Vector3, P :Vector3) -> Vector3 {\n\ts :[2]Vector3;\n\tfor < i: 1..0 {\n\t\ts[i].component[0] = C.component[i] - A.component[i];\n\t\ts[i].component[1] = B.component[i] - A.component[i];\n\t\ts[i].component[2] = A.component[i] - P.component[i];\n\t}\n\tu := cross_product(s[0], s[1]);\n\tif abs(u.component[2]) > 1.0e-2 {\n\t\treturn Vector3.{1.0 - (u.x + u.y) / u.z, u.y / u.z, u.x/u.z};\n\t}\n\treturn Vector3.{-1, 1, 1};\n}\n\nbarycentric_2d :: (pts :*Vec2i, P :Vec2i) -> Vector3 {\n\tu := Vector3.{cast(float)(pts[2][0] - pts[0][0]), \n\t\t\t      cast(float)(pts[1][0] - pts[0][0]),\n\t\t\t      cast(float)(pts[0][0] - P[0])} ^ \n\t     Vector3.{cast(float)(pts[2][1] - pts[0][1]),\n\t     \t      cast(float)(pts[1][1] - pts[0][1]),\n\t     \t      cast(float)(pts[0][1]-P[1])};\n\n\tif abs(u.z) < 1 return Vector3.{-1, 1, 1};\n\treturn Vector3.{1 - (u.x + u.y) / u.z, u.y / u.z, u.x / u.z};\n}\n\nVector3i :: struct {\n    x, y, z: int;\n\n#place x;\n    component: [3] int = ---;\n}\n\noperator - :: (a: Vector3i, b: Vector3i) -> Vector3i {\n    return .{a.x-b.x, a.y-b.y, a.z-b.z};\n}\n\noperator - :: (a: Vector3i) -> Vector3i {\n    return .{-a.x, -a.y, -a.z};\n}\n\noperator + :: (a: Vector3i, b: Vector3i) -> Vector3i {\n    return .{a.x+b.x, a.y+b.y, a.z+b.z};\n}\n\noperator * :: (a: Vector3i, b: Vector3i) -> Vector3i {\n    return .{a.x*b.x, a.y*b.y, a.z*b.z};\n}\n\noperator * :: (a: Vector3i, k: int) -> Vector3i  #symmetric {\n    return .{a.x*k, a.y*k, a.z*k};\n}    \n\noperator * :: (a: Vector3i, k: float64) -> Vector3i  #symmetric {\n    return .{xx(a.x*k), xx(a.y*k), xx(a.z*k)};\n} ",
 			"file": "main.jai",
+			"file_size": 12915,
+			"file_write_time": 133204360414852687,
 			"settings":
 			{
 				"buffer_size": 12501,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
-			}
+			},
+			"undo_stack":
+			[
+				[
+					24,
+					1,
+					"sequence",
+					{
+						"commands":
+						[
+							[
+								"nv_vi_o",
+								{
+									"count": 1,
+									"mode": "mode_internal_normal"
+								}
+							],
+							[
+								"insert",
+								{
+									"characters": "Vec"
+								}
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"insert",
+								{
+									"characters": "draw"
+								}
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							]
+						]
+					},
+					"EgAAAOMBAAAAAAAA5AEAAAAAAAAAAAAA5AEAAAAAAADlAQAAAAAAAAAAAADlAQAAAAAAAOYBAAAAAAAAAAAAAOYBAAAAAAAA5wEAAAAAAAAAAAAA5wEAAAAAAADoAQAAAAAAAAAAAADnAQAAAAAAAOcBAAAAAAAAAQAAAGPmAQAAAAAAAOYBAAAAAAAAAQAAAGXlAQAAAAAAAOUBAAAAAAAAAQAAAFblAQAAAAAAAOYBAAAAAAAAAAAAAOYBAAAAAAAA5wEAAAAAAAAAAAAA5wEAAAAAAADoAQAAAAAAAAAAAADoAQAAAAAAAOkBAAAAAAAAAAAAAOgBAAAAAAAA6AEAAAAAAAABAAAAd+cBAAAAAAAA5wEAAAAAAAABAAAAYeYBAAAAAAAA5gEAAAAAAAABAAAAcuUBAAAAAAAA5QEAAAAAAAABAAAAZOQBAAAAAAAA5AEAAAAAAAABAAAACeMBAAAAAAAA4wEAAAAAAAABAAAACg",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAOIBAAAAAAAA4gEAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					13,
+					1,
+					"sequence",
+					{
+						"commands":
+						[
+							[
+								"nv_vi_o",
+								{
+									"count": 1,
+									"mode": "mode_internal_normal"
+								}
+							],
+							[
+								"insert",
+								{
+									"characters": "stb_"
+								}
+							],
+							[
+								"move",
+								{
+									"by": "characters",
+									"forward": true
+								}
+							],
+							[
+								"move",
+								{
+									"by": "lines",
+									"forward": false
+								}
+							],
+							[
+								"move",
+								{
+									"by": "characters",
+									"forward": true
+								}
+							],
+							[
+								"move",
+								{
+									"by": "characters",
+									"forward": true
+								}
+							],
+							[
+								"move",
+								{
+									"by": "characters",
+									"forward": true
+								}
+							],
+							[
+								"move",
+								{
+									"by": "characters",
+									"forward": true
+								}
+							],
+							[
+								"move",
+								{
+									"by": "characters",
+									"forward": true
+								}
+							],
+							[
+								"insert",
+								{
+									"characters": " "
+								}
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"insert",
+								{
+									"characters": "jjkk"
+								}
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							],
+							[
+								"left_delete",
+								null
+							]
+						]
+					},
+					"FgAAADsYAAAAAAAAPBgAAAAAAAAAAAAAPBgAAAAAAAA9GAAAAAAAAAAAAAA9GAAAAAAAAD4YAAAAAAAAAAAAAD4YAAAAAAAAPxgAAAAAAAAAAAAAPxgAAAAAAABAGAAAAAAAAAAAAABAGAAAAAAAAEEYAAAAAAAAAAAAAEEYAAAAAAAAQhgAAAAAAAAAAAAAQRgAAAAAAABBGAAAAAAAAAEAAAAgQBgAAAAAAABAGAAAAAAAAAEAAABfPxgAAAAAAAA/GAAAAAAAAAEAAABiPhgAAAAAAAA+GAAAAAAAAAEAAAB0PRgAAAAAAAA9GAAAAAAAAAEAAABzPBgAAAAAAAA8GAAAAAAAAAEAAAAJOxgAAAAAAAA7GAAAAAAAAAEAAAAKOxgAAAAAAAA8GAAAAAAAAAAAAAA8GAAAAAAAAD0YAAAAAAAAAAAAAD0YAAAAAAAAPhgAAAAAAAAAAAAAPhgAAAAAAAA/GAAAAAAAAAAAAAA+GAAAAAAAAD4YAAAAAAAAAQAAAGs9GAAAAAAAAD0YAAAAAAAAAQAAAGs8GAAAAAAAADwYAAAAAAAAAQAAAGo7GAAAAAAAADsYAAAAAAAAAQAAAGo",
+					"AQAAAAAAAAABAAAAOhgAAAAAAAA6GAAAAAAAAAAAAAAAAPC/"
+				]
+			]
 		}
 	],
 	"build_system": "",
@@ -792,6 +996,18 @@
 		"selected_items":
 		[
 			[
+				"settin",
+				"Preferences: Settings"
+			],
+			[
+				"theme",
+				"UI: Customize Theme"
+			],
+			[
+				"settings",
+				"Preferences: Settings"
+			],
+			[
 				"install",
 				"Package Control: Install Package"
 			],
@@ -876,10 +1092,6 @@
 				"Clang Format: Format Selection"
 			],
 			[
-				"theme",
-				"UI: Select Theme"
-			],
-			[
 				"color",
 				"UI: Select Color Scheme"
 			],
@@ -912,6 +1124,7 @@
 	],
 	"file_history":
 	[
+		"/Users/varomix/dev/JAI_DEV/mix_tinyrenderer_jai/.gitignore",
 		"/Users/varomix/dev/C_DEV/mix_tinyrenderer_c/stb/deprecated/stb.h",
 		"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdio.h",
 		"/Users/varomix/dev/C_DEV/mix_tinyrenderer_c/cglm/types.h",
@@ -964,7 +1177,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 47.0
 	},
 	"find_in_files":
 	{
@@ -1013,8 +1226,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								6202,
+								6202
 							]
 						],
 						"settings":
@@ -1029,7 +1242,7 @@
 							"vintage_lines.mode": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 5525.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1041,7 +1254,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 39.0
+		"height": 47.0
 	},
 	"input":
 	{
@@ -1114,11 +1327,11 @@
 	{
 		"height": 192.0
 	},
-	"pinned_build_system": "Packages/C++/C Single File.sublime-build",
+	"pinned_build_system": "",
 	"project": "tinyrenderer_proj.sublime-project",
 	"replace":
 	{
-		"height": 74.0
+		"height": 90.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1127,6 +1340,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				".git",
+				"mix_tinyrenderer_jai/.gitignore"
+			],
 			[
 				"main",
 				"main.jai"
@@ -1181,12 +1398,16 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
-		"last_filter": "",
+		"height": 296.0,
+		"last_filter": "vector3",
 		"selected_items":
 		[
+			[
+				"vector3",
+				"Vector3"
+			]
 		],
-		"width": 0.0
+		"width": 580.0
 	},
 	"selected_group": 0,
 	"settings":
@@ -1195,7 +1416,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 222.0,
 	"status_bar_visible": true,
 	"template_settings":
